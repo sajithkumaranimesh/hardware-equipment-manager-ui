@@ -1,7 +1,9 @@
+
 // eslint-disable-next-line react/prop-types
-function ButtonComponent({text}) {
-    return(
-        <button className="button">{text}</button>
+function ButtonComponent({text, ...props}) {
+    return (
+        <button {...props}>{text}</button>
     );
 }
+
 export default ButtonComponent;

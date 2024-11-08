@@ -1,7 +1,9 @@
+import styles from './TextareaFieldComponent.module.css'
+
 // eslint-disable-next-line react/prop-types
 function TextareaFieldComponent({id, placeholder}) {
     return(
-        <textarea id={id} placeholder={placeholder}></textarea>
+        <textarea className={styles.textareaField} id={id} placeholder={placeholder}></textarea>
     );
 }
 
