@@ -19,12 +19,14 @@ import {loader as categoryRecordsLoader} from "../containers/CategoryRecordsCont
 import CategoryUpdatePage from "../pages/CategoryUpdatePage.jsx";
 import {loader as categoryUpdateLoader} from "../containers/CategoryUpdateContainer.jsx";
 import {DashboardLayout} from "../components/layout/DashboardLayout.jsx";
+import {UserRegisrationContainer} from "../containers/UserRegisrationContainer.jsx";
 
 export const router = createBrowserRouter([
     {
         // path: "/", element: <DashboardPage/>,
         path: "/",
-        element: <DashboardLayout/>,
+        // element: <DashboardLayout/>,
+        element: <UserRegisrationContainer/>,
         children: [
             {
                 path: "person", children: [

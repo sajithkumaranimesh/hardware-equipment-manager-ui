@@ -7,7 +7,7 @@ export function CategoryService() {
         if (!response.ok) {
             throw json({message: "could not find category count"},{status: 404});
         }
-        return response.json();
+        return await response.json();
     };
 
     const persist = async (data) => {
@@ -21,7 +21,7 @@ export function CategoryService() {
         if (!response.ok) {
             throw json({message: "could not save category."}, {status: 404});
         }
-        return response.json();
+        return await response.json();
     }
 
     const retrieveAll = async () => {
@@ -31,7 +31,7 @@ export function CategoryService() {
         if(!response.ok) {
             throw json({message: "could not find category."}, {status: 404});
         }
-        return response.json();
+        return await response.json();
     }
 
     const retrieveById = async (id) => {
@@ -41,7 +41,7 @@ export function CategoryService() {
         if (!response.ok) {
             throw json({message: "could not find category."}, {status: 404});
         }
-        return response.json();
+        return await response.json();
     }
 
     const updateById = async (id, data) => {
@@ -55,7 +55,7 @@ export function CategoryService() {
         if (!response.ok) {
             throw json({message: "could not find category."}, {status: 404});
         }
-        return response.json();
+        return await response.json();
     }
 
     const deleteById = async (id) => {
@@ -65,7 +65,7 @@ export function CategoryService() {
         if (!response.ok) {
             throw json({message: "could not find category."}, {status: 404});
         }
-        return response.json();
+        return await response.json();
     }
 
     return{
