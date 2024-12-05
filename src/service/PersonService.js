@@ -1,20 +1,21 @@
-class PersonService {
+import {json} from "react-router-dom";
 
-    static baseUrl = 'http://localhost:8080';
-
-    constructor() {}
-
-    persist = async (person) => {
-        const responsePromise = await fetch(`${(this.baseUrl)}/person`, {
-            method: 'POST',
-            body: JSON.stringify(person),
-            headers: {"Content-Type":"application/json"}
+export function PersonService() {
+    const updateById = async (id, data) => {
+        const response = await fetch(`http://localhost:8080/person/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            }
         })
-        if (!responsePromise.ok) {
-            return "could not persist person";
+        if (!response.ok) {
+            throw json({message: "could not find person."}, {status: 404});
         }
-        return await responsePromise.json();
+        return response.json();
+    }
+
+    return{
+        updateById,
     }
 }
-
-export default PersonService;
