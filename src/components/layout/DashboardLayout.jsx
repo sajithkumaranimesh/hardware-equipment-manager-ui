@@ -1,14 +1,30 @@
 import React from 'react';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
+import {Link, NavLink, Outlet} from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
-const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
-    (icon, index) => ({
-        key: String(index + 1),
-        icon: React.createElement(icon),
-        label: `nav ${index + 1}`,
-    }),
-);
+const items = [
+    {
+        key: '1',
+        icon: React.createElement(UserOutlined),
+        label: <Link to="/user">User</Link>,
+    },
+    {
+        key: '2',
+        icon: React.createElement(VideoCameraOutlined),
+        label: <NavLink to="/videos">Videos</NavLink>,
+    },
+    {
+        key: '3',
+        icon: React.createElement(UploadOutlined),
+        label: <NavLink to="/upload">Upload</NavLink>,
+    },
+    {
+        key: '4',
+        icon: React.createElement(UserOutlined),
+        label: <NavLink to="/profile">Profile</NavLink>,
+    },
+];
 export const DashboardLayout = () => {
     const {
         token: { colorBgContainer, borderRadiusLG },
@@ -43,13 +59,13 @@ export const DashboardLayout = () => {
                 >
                     <div
                         style={{
-                            padding: 24,
+                            padding: 5,
                             minHeight: 550,
                             background: colorBgContainer,
                             borderRadius: borderRadiusLG,
                         }}
                     >
-                        content
+                        <Outlet/>
                     </div>
                 </Content>
                 <Footer

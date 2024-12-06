@@ -1,9 +1,17 @@
-import {Button, Form, Input, Space} from "antd"
+import {Button, Form, Input, InputNumber, Space} from "antd"
+import {UserService} from "../service/UserService.js";
 
-export const UserRegisrationContainer = () => {
+export const UserRegisrationPage = () => {
+    const [form] = Form.useForm();
 
-    const onFinish = (values) => {
+    const service = new UserService();
+
+    const onFinish = async (values) => {
         console.log(values);
+        const submitted = await service.persist(values);
+        if (submitted.status === "SUCCESS") {
+            form.resetFields();
+        }
     }
 
     const onFinishFailed = (error) => {
@@ -14,12 +22,16 @@ export const UserRegisrationContainer = () => {
         <div className="container-fluid">
             <div className="row col-lg-6 col-md-12">
                 <Form
+                    form={form}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
                     layout="vertical">
                     <Form.Item
                         label="First Name"
                         name="firstName"
+                        rules={[
+                            {required: true, message: 'Please enter first name'},
+                        ]}
                     >
                         <Input placeholder="First Name" />
                     </Form.Item>
@@ -32,14 +44,22 @@ export const UserRegisrationContainer = () => {
                     <Form.Item
                         label="Email"
                         name="email"
+                        rules={[
+                            {type: "email", message: "Please enter a valid email" },
+                            {required: true, message: 'Please enter your email.'}
+                        ]}
                     >
                         <Input placeholder="Email" />
                     </Form.Item>
                     <Form.Item
                         label="Phone No"
-                        name="phoneNo"
+                        name="phone"
+                        rules={[
+                            {type: "number", min: 1, message: "Please enter a valid phone number" },
+                            {required: true, message: 'Please enter your phone no.'}
+                        ]}
                     >
-                        <Input placeholder="Phone No" />
+                        <InputNumber placeholder="Phone No" style={{ width: "100%" }} />
                     </Form.Item>
                     <Form.Item
                         label="Address"
