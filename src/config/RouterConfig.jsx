@@ -7,6 +7,9 @@ import {UserUpdatePage} from "../containers/UserUpdatePage.jsx";
 import {CategoryRecordsPage} from "../containers/CategoryRecordsPage.jsx";
 import {CategoryRegistrationPage} from "../containers/CategoryRegistrationPage.jsx";
 import {CategoryUpdatePage} from "../containers/CategoryUpdatePage.jsx";
+import {EquipmentRecordsPage} from "../containers/EquipmentRecordsPage.jsx";
+import {EquipmentRegistrationPage} from "../containers/EquipmentRegistrationPage.jsx";
+import {EquipmentUpdatePage} from "../containers/EquipmentUpdatePage.jsx";
 
 
 export const router = createBrowserRouter([
@@ -44,6 +47,22 @@ export const router = createBrowserRouter([
                     {
                         path: ":id",
                         element: <CategoryUpdatePage/>
+                    }
+                ]
+            },
+            {
+                path: "equipment", children: [
+                    {
+                        index: true,
+                        element: <EquipmentRecordsPage/>,
+                    },
+                    {
+                        path: "register",
+                        element: <EquipmentRegistrationPage/>
+                    },
+                    {
+                        path: ":id",
+                        element: <EquipmentUpdatePage/>
                     }
                 ]
             }

@@ -38,10 +38,13 @@ export const UserUpdatePage = ({}) => {
             <div className="row col-lg-6 col-md-12">
                 {data? (
                     <Form
+                        labelCol={{
+                            span: 4,
+                        }}
                         form={form}
                         onFinish={onFinish}
                         onFinishFailed={onFinishFailed}
-                        layout="vertical"
+                        layout="horizontal"
                         initialValues={data}
                     >
                         <Form.Item
@@ -91,7 +94,9 @@ export const UserUpdatePage = ({}) => {
                         >
                             <Input placeholder="Address"/>
                         </Form.Item>
-                        <Form.Item>
+                        <Form.Item
+                            style={{ textAlign: "end" }}
+                        >
                             <Space>
                                 <Button type="primary" htmlType="reset" danger>Clear</Button>
                                 <Button type="primary" htmlType="submit">Submit</Button>

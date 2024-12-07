@@ -17,7 +17,7 @@ const items = [
     {
         key: '3',
         icon: React.createElement(UploadOutlined),
-        label: <NavLink to="/upload">Upload</NavLink>,
+        label: <NavLink to="equipment">Equipment</NavLink>,
     },
     {
         key: '4',
