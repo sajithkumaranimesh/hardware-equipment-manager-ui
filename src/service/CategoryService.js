@@ -25,7 +25,7 @@ export function CategoryService() {
     }
 
     const retrieveAll = async () => {
-        const response = await fetch(`http://localhost:8080/category/`, {
+        const response = await fetch(`http://localhost:8080/category`, {
             method: "GET",
         });
         if(!response.ok) {

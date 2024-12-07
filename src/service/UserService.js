@@ -49,10 +49,21 @@ export function UserService() {
         return await response.json();
     }
 
+    const deleteById = async (id) => {
+        const response = await fetch(`http://localhost:8080/person/${id}`, {
+            method: "DELETE"
+        })
+        if (!response.ok) {
+            throw json({message: "could not find person."}, {status: 404});
+        }
+        return await response.json();
+    }
+
     return{
         persist,
         retrieveAll,
         retrieveById,
+        deleteById,
         updateById,
     }
 }

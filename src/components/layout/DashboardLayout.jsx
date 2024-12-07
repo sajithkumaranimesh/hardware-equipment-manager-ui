@@ -7,12 +7,12 @@ const items = [
     {
         key: '1',
         icon: React.createElement(UserOutlined),
-        label: <Link to="/user">User</Link>,
+        label: <Link to="user">User</Link>,
     },
     {
         key: '2',
         icon: React.createElement(VideoCameraOutlined),
-        label: <NavLink to="/videos">Videos</NavLink>,
+        label: <NavLink to="category">Category</NavLink>,
     },
     {
         key: '3',
@@ -43,7 +43,7 @@ export const DashboardLayout = () => {
                 }}
             >
                 <div className="demo-logo-vertical" />
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
+                <Menu theme="dark" mode="inline" defaultSelectedKeys={['0']} items={items} />
             </Sider>
             <Layout>
                 <Header

@@ -68,7 +68,6 @@ export const UserRecordsPage = () => {
             </>) : (
                 <p>Loading...</p>
             )}
-
         </>
     );
 }
