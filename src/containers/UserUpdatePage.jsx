@@ -33,80 +33,91 @@ export const UserUpdatePage = ({}) => {
     }
 
     return (
-
         <div className="container-fluid">
-            <div className="row col-lg-6 col-md-12">
-                {data? (
+            <div className="row justify-content-center">
+                {data ? (
                     <Form
                         labelCol={{
-                            span: 4,
+                            span: 6,
+                        }}
+                        wrapperCol={{
+                            span: 18,
                         }}
                         form={form}
                         onFinish={onFinish}
                         onFinishFailed={onFinishFailed}
-                        layout="horizontal"
+                        layout="vertical"
                         initialValues={data}
                     >
-                        <Form.Item
-                            label="ID"
-                            name="id"
-                        >
-                            <Input placeholder="ID" disabled/>
-                        </Form.Item>
-                        <Form.Item
-                            label="First Name"
-                            name="firstName"
-                            rules={[
-                                {required: true, message: 'Please enter first name'},
-                            ]}
-                        >
-                            <Input placeholder="First Name"/>
-                        </Form.Item>
-                        <Form.Item
-                            label="Last Name"
-                            name="lastName"
-                        >
-                            <Input placeholder="Last Name" />
-                        </Form.Item>
-                        <Form.Item
-                            label="Email"
-                            name="email"
-                            rules={[
-                                {type: "email", message: "Please enter a valid email"},
-                                {required: true, message: 'Please enter your email.'}
-                            ]}
-                        >
-                            <Input placeholder="Email"/>
-                        </Form.Item>
-                        <Form.Item
-                            label="Phone No"
-                            name="phone"
-                            rules={[
-                                {type: "number", min: 1, message: "Please enter a valid phone number"},
-                                {required: true, message: 'Please enter your phone no.'}
-                            ]}
-                        >
-                            <InputNumber placeholder="Phone No" style={{width: "100%"}}/>
-                        </Form.Item>
-                        <Form.Item
-                            label="Address"
-                            name="address"
-                        >
-                            <Input placeholder="Address"/>
-                        </Form.Item>
-                        <Form.Item
-                            style={{ textAlign: "end" }}
-                        >
-                            <Space>
-                                <Button type="primary" htmlType="reset" danger>Clear</Button>
-                                <Button type="primary" htmlType="submit">Submit</Button>
-                            </Space>
-                        </Form.Item>
+                        <div className="row">
+                            {/* Left Column */}
+                            <div className="col-md-6">
+                                <Form.Item label="ID" name="id">
+                                    <Input placeholder="ID" disabled />
+                                </Form.Item>
+                                <Form.Item
+                                    label="First Name"
+                                    name="firstName"
+                                    rules={[
+                                        { required: true, message: "Please enter first name" },
+                                    ]}
+                                >
+                                    <Input placeholder="First Name" />
+                                </Form.Item>
+                                <Form.Item label="Last Name" name="lastName">
+                                    <Input placeholder="Last Name" />
+                                </Form.Item>
+                            </div>
+
+                            {/* Right Column */}
+                            <div className="col-md-6">
+                                <Form.Item
+                                    label="Email"
+                                    name="email"
+                                    rules={[
+                                        { type: "email", message: "Please enter a valid email" },
+                                        { required: true, message: "Please enter your email." },
+                                    ]}
+                                >
+                                    <Input placeholder="Email" />
+                                </Form.Item>
+                                <Form.Item
+                                    label="Phone No"
+                                    name="phone"
+                                    rules={[
+                                        { type: "number", min: 1, message: "Please enter a valid phone number" },
+                                        { required: true, message: "Please enter your phone no." },
+                                    ]}
+                                >
+                                    <InputNumber placeholder="Phone No" style={{ width: "100%" }} />
+                                </Form.Item>
+                                <Form.Item label="Address" name="address">
+                                    <Input placeholder="Address" />
+                                </Form.Item>
+                            </div>
+                        </div>
+
+                        {/* Action Buttons */}
+                        <div className="row">
+                            <div className="col-12 text-end">
+                                <Form.Item>
+                                    <Space>
+                                        <Button type="primary" htmlType="reset" danger>
+                                            Clear
+                                        </Button>
+                                        <Button type="primary" htmlType="submit">
+                                            Submit
+                                        </Button>
+                                    </Space>
+                                </Form.Item>
+                            </div>
+                        </div>
                     </Form>
                 ) : (
                     <p>Loading...</p>
                 )}
             </div>
         </div>
-    )
+    );
+
 }

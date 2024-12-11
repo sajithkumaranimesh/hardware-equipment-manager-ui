@@ -73,7 +73,7 @@ export const DashboardLayout = () => {
                         textAlign: 'center',
                     }}
                 >
-                    Ant Design ©{new Date().getFullYear()} Created by Ant UED
+                    Design ©{new Date().getFullYear()} Created by Nimesh Sajith Kumara
                 </Footer>
             </Layout>
         </Layout>

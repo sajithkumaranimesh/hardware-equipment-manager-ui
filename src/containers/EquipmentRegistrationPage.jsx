@@ -1,10 +1,29 @@
 import {Button, Form, Input, InputNumber, Select, Space} from "antd"
 import {EquipmentService} from "../service/EquipmentService.js";
+import {useEffect, useState} from "react";
+import {CategoryService} from "../service/CategoryService.js";
 
 export const EquipmentRegistrationPage = () => {
     const [form] = Form.useForm();
+    const [categories, setCategories] = useState([]);
 
     const service = new EquipmentService();
+    const categoryService= new CategoryService();
+
+    useEffect(() => {
+        const retrieveCategorys = async () => {
+            try {
+                const promise = await categoryService.retrieveAll();
+                const categoryOptions = promise.data.map((item) => ({
+                    value: item.name,
+                    label: item.name
+                }))
+                setCategories(categoryOptions);
+            }catch(error){}
+        }
+        retrieveCategorys();
+    },[])
+
 
     const onFinish = async (values) => {
         console.log(values);
@@ -56,7 +75,13 @@ export const EquipmentRegistrationPage = () => {
                             { required: true, message: "Please select availability status." },
                         ]}
                     >
-                        <Select placeholder="select availability status"/>
+                        <Select
+                            placeholder="select availability status"
+                            options={[
+                                {value: true, label: "Availabil"},
+                                {value: false, label: "Not Availabil"},
+                            ]}
+                        />
                     </Form.Item>
                     <Form.Item
                         label="Category Name"
@@ -65,7 +90,12 @@ export const EquipmentRegistrationPage = () => {
                             { required: true, message: "Please select category name." },
                         ]}
                     >
-                        <Select placeholder="select category name."/>
+                        <Select
+                            placeholder="select category name."
+                            options={
+                                categories
+                            }
+                        />
                     </Form.Item>
                     <Form.Item>
                         <Space>
